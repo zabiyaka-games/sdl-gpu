@@ -200,6 +200,12 @@ source_group(Common FILES ${SDL_gpu_SRCS} ${SDL_gpu_HDRS})
 
 # Install the headers and library
 if(SDL_gpu_INSTALL)
+	if(SDL_gpu_INSTALL_ADD_VERSION_PREFIX)
+		set(LIB_INSTALL_DESTINATION "${OUTPUT_DIR}/lib")
+	else()
+		set(LIB_INSTALL_DESTINATION "lib")
+	endif()
+
 	if(SDL_gpu_USE_SDL1)
 		install(FILES ${SDL_gpu_public_HDRS} DESTINATION include/SDL)
 	else(SDL_gpu_USE_SDL1)
@@ -207,10 +213,10 @@ if(SDL_gpu_INSTALL)
 	endif(SDL_gpu_USE_SDL1)
 
 	if(SDL_gpu_BUILD_SHARED)
-		install(TARGETS SDL_gpu_shared EXPORT SDL_gpu-targets DESTINATION ${OUTPUT_DIR}/lib)
+		install(TARGETS SDL_gpu_shared EXPORT SDL_gpu-targets DESTINATION "${LIB_INSTALL_DESTINATION}")
 	endif()
 	if(SDL_gpu_BUILD_STATIC)
-		install(TARGETS SDL_gpu EXPORT SDL_gpu-targets DESTINATION ${OUTPUT_DIR}/lib)
+		install(TARGETS SDL_gpu EXPORT SDL_gpu-targets DESTINATION "${LIB_INSTALL_DESTINATION}")
 	endif()
 
 endif(SDL_gpu_INSTALL)

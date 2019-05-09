@@ -54,6 +54,7 @@ endif()
 
 
 option(SDL_gpu_INSTALL "Install SDL_gpu libs, includes, and CMake scripts" ${SDL_gpu_INSTALL_BY_DEFAULT})
+option(SDL_gpu_INSTALL_ADD_VERSION_PREFIX "Add SDL_gpu version prefix to library installation dir" ON)
 #option(SDL_gpu_BUILD_DEBUG "Build with debugging symbols" ON)
 option(SDL_gpu_BUILD_DEMOS "Build SDL_gpu demo programs" ${SDL_gpu_DEFAULT_BUILD_DEMOS})
 option(SDL_gpu_BUILD_TESTS "Build SDL_gpu test programs" OFF)
