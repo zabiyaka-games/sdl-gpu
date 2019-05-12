@@ -125,17 +125,10 @@ if ( SDL_gpu_USE_SDL1 )
 else ( SDL_gpu_USE_SDL1 )
 	find_package(SDL2 REQUIRED)
 
-	if ( NOT SDL2_FOUND )
-	   message ( FATAL_ERROR "SDL2 not found!" )
-	endif ( NOT SDL2_FOUND )
-
-	if ( NOT SDL2MAIN_LIBRARY )
-		message ( WARNING "SDL2MAIN_LIBRARY is NOTFOUND" )
-		SET( SDL2MAIN_LIBRARY "" )
-	endif ( NOT SDL2MAIN_LIBRARY )
-
-	include_directories(${SDL2_INCLUDE_DIR})
-	link_libraries(${SDL2MAIN_LIBRARY} ${SDL2_LIBRARY})
+    link_libraries(
+        SDL2::SDL2main
+        "SDL2::SDL2$<$<BOOL:${SDL_gpu_BUILD_STATIC}>:-static>"
+    )
 endif( SDL_gpu_USE_SDL1 )
 
 # Find the package for OpenGL
