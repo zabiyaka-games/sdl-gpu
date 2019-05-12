@@ -37,14 +37,10 @@ find_library(SDL2_LIBRARY NAMES SDL2 SDL2d sdl2 sdl2 sdl-2.0
           DOC "The SDL library"
 )
 
-if(WIN32)
-	find_library(SDL2MAIN_LIBRARY NAMES SDL2main sdl2main
-        PATH_SUFFIXES ${SDL2_LIBRARY_PATH_SUFFIXES}
-		DOC "The SDLmain library needed on some platforms when builing an application (opposed to a library)"
+find_library(SDL2MAIN_LIBRARY NAMES SDL2main SDL2maind sdl2main
+    PATH_SUFFIXES ${SDL2_LIBRARY_PATH_SUFFIXES}
+    DOC "The SDLmain library needed on some platforms when builing an application (opposed to a library)"
 )
-else()
-	set(SDL2MAIN_LIBRARY "")
-endif()
 
 
 # handle the QUIETLY and REQUIRED arguments and set SDL_FOUND to TRUE if
